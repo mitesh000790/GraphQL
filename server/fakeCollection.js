@@ -1,13 +1,13 @@
 const user = [
     {
-        id: "123",
+        _id: "123",
         firstName: "Mitesh",
         lastName: "Dudhat",
         email: "mitesh@gmail.com",
         password: "123123123"
     },
     {
-        id: "1234",
+        _id: "1234",
         firstName: "MDee",
         lastName: "Dudhat",
         email: "mdee@gmail.com",
@@ -15,7 +15,7 @@ const user = [
     }
 ]
 
-const books = [
+const quote = [
     {
         by: "123",
         name: "Rocket Science"
@@ -26,7 +26,7 @@ const books = [
     }
 ]
 
-module.exports = {user, books}
+module.exports = {user, quote}
 
 
 
