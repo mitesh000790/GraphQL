@@ -1,18 +1,23 @@
 import React, {useState} from 'react'
 import Input from '../../component/Input'
 import Button from '../../component/Button'
-import { Link } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import { SIGNUP_USER } from '../../GraphQLOperation/mutation'
 
 function SignUp (){
+    const navigate = useNavigate()
     const [state, setState] = useState({
         firstName: '',
         lastName: '',
         email: '',
         password: ''
     })
-    const [signupUser,{data,loading,error}] = useMutation(SIGNUP_USER)
+    const [signupUser,{data,loading,error}] = useMutation(SIGNUP_USER, {
+        onCompleted(data){
+            navigate('/login')
+        }
+    })
 
     const handleChangeInput = (key, value) => {
         setState({
@@ -46,15 +51,6 @@ function SignUp (){
 
     return (
         <div className="bg-gray-200 font-sans text-gray-700">
-            {
-                error &&
-                <div className="red card-panel">{error.message}</div>
-            }
-
-            {
-                data && data.user &&
-                <div className="green card-panel">{data.user.firstName} is SignedUp. You can login now!</div>
-            }
             <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'860px'}}>
                 <div className="max-w-md w-full mb-auto mt-auto mx-auto">
                     <div className="bg-white rounded-lg overflow-hidden shadow-2xl">

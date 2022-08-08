@@ -6,10 +6,10 @@ class Button extends React.Component {
     }
 
     render() {
-        const { action, actionType } = this.props
+        const { action, actionType, onClick } = this.props
         return (
             <div>
-                <button className={`w-full p-3 mt-4 bg-indigo-600 text-white rounded shadow ${actionType === "primary" ? "bg-blue-500" : "bg-red-500"}`}>{action}</button>
+                <button className={`w-full p-3  bg-indigo-600 text-white rounded shadow ${actionType === "primary" ? "bg-blue-500" : "bg-red-500"}`} onClick={onClick}>{action}</button>
             </div>
         )
     }
