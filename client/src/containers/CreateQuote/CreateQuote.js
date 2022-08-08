@@ -1,23 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Input from "../../component/Input";
 import Button from "../../component/Button";
+import { useMutation } from '@apollo/client';
+import { CREATE_QUOTE } from '../../GraphQLOperation/mutation';
 
-class CreateQuote extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state={
-            name: ""
-        }
-    }
+function CreateQuote() {
+    const [state, setState] = useState({name: ""})
+    const [createQuote,{loading,error,data}] = useMutation(CREATE_QUOTE,{
+        refetchQueries:[
+            'getAllQuotes',
+            'getMyProfile'
+        ]
+    })
 
-    handleChangeInput = (key, value) => {
-        this.setState((prevS) =>({
-            ...prevS.state,
+    const handleChangeInput = (key, value) => {
+        setState({
+            ...state,
             [key]: value
-        }))
+        })
     }
 
-    renderInput = ( type = 'text', id, label, value) => {
+    const renderInput = ( type = 'text', id, label, value) => {
         return (
             <div >
                 <Input
@@ -25,28 +28,38 @@ class CreateQuote extends React.Component {
                     label={label}
                     value={value}
                     type={type}
-                    onChange={this.handleChangeInput}
+                    onChange={handleChangeInput}
                 />
             </div>
         )
     }
 
-    render() {
-        const {  } = this.props
-        const { name } = this.state
-        return (
-            <div className="bg-gray-200 font-sans text-gray-700">
-                <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'860px'}}>
-                    <div className="bg-white rounded-lg overflow-hidden min-w-full ml-10 shadow-2xl">
-                        <div className="min-w-min m-10 p-4 text-gray-800 bg-gray-100 rounded-lg shadow">
-                            {this.renderInput('text', 'name', 'Write A Quote', name)}
-                            <Button action={"Create"} actionType={"primary"}/>
-                        </div>
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        createQuote({
+            variables:{
+                name:state.name
+            }
+        }).then(()=>{
+            setState({
+                name: ""
+            })
+        })
+    }
+
+
+    return (
+        <div className="bg-gray-200 font-sans text-gray-700">
+            <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'860px'}}>
+                <div className="bg-white rounded-lg overflow-hidden min-w-full ml-10 shadow-2xl">
+                    <div className="min-w-min m-10 p-4 text-gray-800 bg-gray-100 rounded-lg shadow">
+                        {renderInput('text', 'name', 'Write A Quote', state.name)}
+                        <Button action={"Create"} actionType={"primary"} onClick={handleSubmit}/>
                     </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default CreateQuote

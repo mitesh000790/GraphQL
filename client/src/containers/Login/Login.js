@@ -1,13 +1,26 @@
 import React, {useState} from 'react'
 import Input from '../../component/Input'
 import Button from '../../component/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../GraphQLOperation/mutation'
 
 function Login(){
+    const navigate = useNavigate()
     const [state, setState] = useState({
         email: '',
         password: ''
     })
+    const [signinUser,{error,loading,data}] = useMutation(LOGIN_USER,{
+        onCompleted(data){
+            localStorage.setItem("token",data.user.token)
+            navigate('/profile')
+        }
+    })
+
+    console.log("loading-------->",data)
+
+    if(loading) return <h1>Loading</h1>
 
      const handleChangeInput = (key, value) => {
          setState({
@@ -31,8 +44,13 @@ function Login(){
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("hiiii this is working dude!")
+         e.preventDefault()
+        signinUser({
+            variables:{
+                userSignin: state
+            }
+        })
+
     }
 
     return (

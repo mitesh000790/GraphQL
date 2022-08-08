@@ -26,12 +26,12 @@ export const GET_MY_PROFILE = gql`
 
 export const GET_USER_BY_ID = gql`
     query getUserById($userid: ID!) {
-        user(_id: $userid) {
+        users(_id: $userid) {
             _id
             firstName
             lastName
             email
-            quotes{
+            quote{
                 name
             }
         }
