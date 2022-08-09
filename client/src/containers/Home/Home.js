@@ -13,17 +13,17 @@ function Home (){
             return  <h2>No Quotes available</h2>
         }
         return (
-            <div className="bg-gray-200 font-sans text-gray-700">
-                <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'860px'}}>
-                    <div className="bg-white rounded-lg overflow-hidden min-w-full shadow-2xl">
-                        { data?.quote?.map((quote, key)=>(<div key={key} className="min-w-min m-10 p-4 text-gray-800 bg-gray-100 rounded-lg shadow">
+            <div className="bg-gray-200 dark:bg-slate-900 font-sans text-gray-700">
+                <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'861px'}}>
+                    <div className="bg-white dark:bg-slate-700  rounded-lg overflow-hidden min-w-full shadow-2xl">
+                        { data?.quote?.map((quote, key)=>(<div key={key} className="min-w-min m-10 p-4 text-gray-800 bg-gray-100 dark:bg-slate-500 rounded-lg shadow">
                             <div className="mb-2">
-                                <div className="h-3 text-3xl text-left text-gray-600">“</div>
-                                <p className="px-4 text-sm text-center text-gray-600 font-black">
+                                <div className="h-3 text-3xl text-left text-gray-600 dark:text-slate-200">“</div>
+                                <p className="px-4 text-sm text-center text-gray-600 dark:text-slate-200 font-black">
                                     {quote.name}
                                 </p>
-                                <div className="h-3 text-3xl text-right text-gray-600">”</div>
-                                <div className="pt-10 text-1xl text-end font-black">
+                                <div className="h-3 text-3xl text-right text-gray-600 dark:text-slate-200">”</div>
+                                <div className="pt-10 text-1xl text-end font-black dark:text-slate-200">
                                     <Link to={`/other-profile/${quote.by._id}`}>Created By: {quote.by.firstName}</Link></div>
                             </div>
                         </div>))}
