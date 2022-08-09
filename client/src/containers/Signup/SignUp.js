@@ -50,11 +50,11 @@ function SignUp (){
     }
 
     return (
-        <div className="bg-gray-200 font-sans text-gray-700">
-            <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'860px'}}>
+        <div className="bg-gray-200 dark:bg-slate-900 font-sans text-gray-700">
+            <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'861px'}}>
                 <div className="max-w-md w-full mb-auto mt-auto mx-auto">
-                    <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
-                        <h1 className="text-3xl text-center mt-7 font-black">Sign Up</h1>
+                    <div className="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl">
+                        <h1 className="text-3xl text-center mt-7 font-black dark:text-slate-200">Sign Up</h1>
                         <div className="p-8">
                             <form  onSubmit={handleSubmit}>
                                 {renderInput('text', 'firstName', 'First Name', state.firstName )}
@@ -65,8 +65,8 @@ function SignUp (){
                             </form>
                         </div>
 
-                        <div className="flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100">
-                            <Link to="/login" className="font-medium text-blue-500">Already have account?</Link>
+                        <div className="flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100 dark:bg-slate-700">
+                            <Link to="/login" className="font-medium text-blue-500 dark:text-slate-200">Already have account?</Link>
                         </div>
                     </div>
                 </div>

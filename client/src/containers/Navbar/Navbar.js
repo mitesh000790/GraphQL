@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Button from "../../component/Button";
+import Toggle from "../../component/Toggle";
 
 function Navbar(){
     const navigate = useNavigate()
@@ -14,7 +15,7 @@ function Navbar(){
 
     return (
         <div>
-            <nav className="w-full bg-blue-500 shadow">
+            <nav className="w-full bg-blue-500 dark:bg-slate-500 shadow">
                 <div className="justify-between px-4 mx-auto md:items-center md:flex md:px-8">
                     <div>
                         <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -71,7 +72,7 @@ function Navbar(){
                                         <Link to="/profile">Profile</Link>
                                     </li>
                                     <li className="text-white hover:text-indigo-200">
-                                        <Link to="/create-quote">Craete</Link>
+                                        <Link to="/create-quote">Create</Link>
                                     </li>
                                     <li className="text-white hover:text-indigo-200">
                                         <Button action={"LogOut"} actionType={"secondary"} onClick={() => {localStorage.removeItem("token")
@@ -87,6 +88,7 @@ function Navbar(){
                                     </li>
                                     </>
                                     }
+                                <Toggle/>
                             </ul>
                         </div>
                     </div>

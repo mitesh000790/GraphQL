@@ -14,7 +14,7 @@ class Input extends React.Component {
             <div>
                 <div className="mb-5">
                     <label htmlFor={id}
-                           className="block mb-2 text-sm font-medium text-gray-600">{label}</label>
+                           className="block mb-2 dark:text-slate-200 text-sm font-medium text-gray-600">{label}</label>
 
                     <input
                         type={is_input_pw ? 'password' : type}

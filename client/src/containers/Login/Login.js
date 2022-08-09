@@ -54,11 +54,11 @@ function Login(){
     }
 
     return (
-        <div className="bg-gray-200 font-sans text-gray-700">
-            <div className="container max-h-min md:mx-auto mx-auto p-8 flex" style={{height:'860px'}}>
+        <div className="bg-gray-200 dark:bg-slate-900 font-sans text-gray-700">
+            <div className="container max-h-min md:mx-auto mx-auto p-8 flex" style={{height:'861px'}}>
                 <div className="max-w-md w-full mb-auto mt-auto mx-auto">
-                    <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
-                        <h1 className="text-3xl text-center mt-7 font-black">Log in</h1>
+                    <div className="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl">
+                        <h1 className="text-3xl text-center mt-7 font-black dark:text-slate-200">Log in</h1>
                         <div className="p-8">
                             <form  onSubmit={handleSubmit}>
                                 {renderInput('text', 'email', 'Email', state.email )}
@@ -67,10 +67,10 @@ function Login(){
                             </form>
                         </div>
 
-                        <div className="flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100">
-                            <Link to="/signup" className="font-medium text-blue-500">Create account</Link>
+                        <div className="flex justify-between p-8 text-sm border-t border-gray-300 dark:bg-slate-700 bg-gray-100">
+                            <Link to="/signup" className="font-medium dark:text-slate-200 text-blue-500">Create account</Link>
 
-                            <Link to="#" className="text-gray-600">Forgot password?</Link>
+                            <Link to="#" className="text-gray-600 dark:text-slate-200">Forgot password?</Link>
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ import {
     InMemoryCache,
     ApolloProvider,
 } from "@apollo/client";
+import { ThemeProvider } from "./component/themeContext"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -23,11 +24,13 @@ const client = new ApolloClient({
 
 root.render(
   <React.StrictMode>
-      <BrowserRouter >
-          <ApolloProvider client={client}>
-            <App />
-          </ApolloProvider>
-      </BrowserRouter>
+      <ThemeProvider>
+          <BrowserRouter >
+              <ApolloProvider client={client}>
+                <App />
+              </ApolloProvider>
+          </BrowserRouter>
+      </ThemeProvider>
   </React.StrictMode>
 );
 
