@@ -5,7 +5,14 @@ import {useNavigate} from 'react-router-dom'
 
 function Profile(){
     const navigate  = useNavigate()
-    const {loading,error,data} = useQuery(GET_MY_PROFILE)
+    const {loading,error,data} = useQuery(GET_MY_PROFILE,{
+        context: {
+            headers: {
+                authorization:localStorage.getItem("token") || ""
+            }
+        }
+    })
+
     if(!localStorage.getItem("token")){
         navigate("/login")
         return <h1>unauthorized</h1>

@@ -4,6 +4,7 @@ import Button from '../../component/Button'
 import {Link, useNavigate} from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import { SIGNUP_USER } from '../../GraphQLOperation/mutation'
+import UploadImage from "../../component/UploadImage";
 
 function SignUp (){
     const navigate = useNavigate()
@@ -11,6 +12,7 @@ function SignUp (){
         firstName: '',
         lastName: '',
         email: '',
+        // image: '',
         password: ''
     })
     const [signupUser,{data,loading,error}] = useMutation(SIGNUP_USER, {
@@ -19,10 +21,17 @@ function SignUp (){
         }
     })
 
-    const handleChangeInput = (key, value) => {
+    const handleChangeInput = (key, value, e) => {
         setState({
             ...state,
             [key]: value
+        })
+    }
+
+    const handleChangeImage = (e) => {
+        setState({
+            ...state,
+            image: e.target.files[0]
         })
     }
 
@@ -39,6 +48,21 @@ function SignUp (){
             </div>
         )
     }
+
+    // const renderImage = ( type, id, label, value) => {
+    //     return (
+    //         <div >
+    //             <UploadImage
+    //                 id={id}
+    //                 label={label}
+    //                 value={value}
+    //                 type={type}
+    //                 onChange={handleChangeImage}
+    //             />
+    //         </div>
+    //     )
+    // }
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -61,6 +85,8 @@ function SignUp (){
                                 {renderInput('text', 'lastName', 'Last Name', state.lastName )}
                                 {renderInput('text', 'email', 'Email', state.email )}
                                 {renderInput('password', 'password', 'Password', state.password )}
+                                {/*{renderImage('file', 'image', 'Upload Image', state.image )}*/}
+
                                 <Button action={"SignUp"} actionType={"primary"}/>
                             </form>
                         </div>
