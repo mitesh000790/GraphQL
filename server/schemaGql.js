@@ -27,11 +27,17 @@ const typeDefs = gql`
         email: String
         password: String
         quote: [quote]
+#        image: [Image]
     }
 
     type quote{
         by: ID,
         name: String
+    }
+    
+    type Image{
+        by: ID
+        image: String
     }
 
     type Token{
@@ -42,6 +48,8 @@ const typeDefs = gql`
         signupUser(userNew:userInput!):user
         signinUser(userSignin:UserSigninInput!):Token
         createQuote(name:String!):String
+        updateUser(userData: userData!): user
+        uploadImage(image:String!):String
     }
 
     input UserSigninInput{
@@ -54,6 +62,13 @@ const typeDefs = gql`
         lastName: String
         email: String
         password: String
+    }
+    
+    input userData{
+        _id: ID
+        firstName: String
+        lastName: String
+        email: String
     }
 
 `
