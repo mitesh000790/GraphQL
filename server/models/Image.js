@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const image = new mongoose.Schema({
     image:{
-        type:String,
+        type:Buffer,
         required:true
     },
     by:{

@@ -14,6 +14,7 @@ export const GET_ALL_QUOTES = gql`
 export const GET_MY_PROFILE = gql`
     query getMyProfile{
         users:myprofile{
+            _id
             firstName
             lastName
             email

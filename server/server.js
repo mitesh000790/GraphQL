@@ -27,7 +27,6 @@ const context = ({req})=>{
     const { authorization } = req.headers;
     if(authorization){
         const {userId} = jwt.verify(authorization,JWT_SECRET)
-        console.log("userId------------->", userId, authorization)
         return {userId}
     }
 }

@@ -7,12 +7,12 @@ import Helmet from "react-helmet"
 function App() {
   return (
     <div>
-        <Helmet
-            titleTemplate="%s - An ....."
-            defaultTitle="Quote Book"
-        >
-            <meta name="description" content="Quote Book" />
-        </Helmet>
+        {/*<Helmet*/}
+        {/*    titleTemplate="%s - An ....."*/}
+        {/*    defaultTitle="Quote Book"*/}
+        {/*>*/}
+        {/*    <meta name="description" content="Quote Book" />*/}
+        {/*</Helmet>*/}
         <Navbar/>
         <Routing/>
     </div>

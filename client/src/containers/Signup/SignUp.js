@@ -28,13 +28,6 @@ function SignUp (){
         })
     }
 
-    const handleChangeImage = (e) => {
-        setState({
-            ...state,
-            image: e.target.files[0]
-        })
-    }
-
     const renderInput = ( type = 'text', id, label, value) => {
         return (
             <div >
@@ -49,19 +42,7 @@ function SignUp (){
         )
     }
 
-    // const renderImage = ( type, id, label, value) => {
-    //     return (
-    //         <div >
-    //             <UploadImage
-    //                 id={id}
-    //                 label={label}
-    //                 value={value}
-    //                 type={type}
-    //                 onChange={handleChangeImage}
-    //             />
-    //         </div>
-    //     )
-    // }
+
 
 
     const handleSubmit = (e) => {
@@ -75,8 +56,8 @@ function SignUp (){
 
     return (
         <div className="bg-gray-200 dark:bg-slate-900 font-sans text-gray-700">
-            <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'861px'}}>
-                <div className="max-w-md w-full mb-auto mt-auto mx-auto">
+            <div className="container md:mx-auto mx-auto p-8 flex" style={{minHeight:'100vh'}}>
+                <div className="max-w-md mt-20 w-full mb-auto mt-auto mx-auto">
                     <div className="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl">
                         <h1 className="text-3xl text-center mt-7 font-black dark:text-slate-200">Sign Up</h1>
                         <div className="p-8">
@@ -85,8 +66,6 @@ function SignUp (){
                                 {renderInput('text', 'lastName', 'Last Name', state.lastName )}
                                 {renderInput('text', 'email', 'Email', state.email )}
                                 {renderInput('password', 'password', 'Password', state.password )}
-                                {/*{renderImage('file', 'image', 'Upload Image', state.image )}*/}
-
                                 <Button action={"SignUp"} actionType={"primary"}/>
                             </form>
                         </div>

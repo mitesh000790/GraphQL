@@ -14,8 +14,8 @@ function Home (){
         }
         return (
             <div className="bg-gray-200 dark:bg-slate-900 font-sans text-gray-700">
-                <div className="container md:mx-auto mx-auto p-8 flex" style={{height:'861px'}}>
-                    <div className="bg-white dark:bg-slate-700  rounded-lg overflow-hidden min-w-full shadow-2xl">
+                <div className="container md:mx-auto mx-auto p-8 flex" style={{minHeight:'100vh'}}>
+                    <div className="bg-white mt-20 dark:bg-slate-700  rounded-lg overflow-hidden min-w-full shadow-2xl">
                         { data?.quote?.map((quote, key)=>(<div key={key} className="min-w-min m-10 p-4 text-gray-800 bg-gray-100 dark:bg-slate-500 rounded-lg shadow">
                             <div className="mb-2">
                                 <div className="h-3 text-3xl text-left text-gray-600 dark:text-slate-200">“</div>
