@@ -67,15 +67,16 @@ const resolvers = {
                return User.findByIdAndUpdate({_id: userData._id}, {...userData}, {new:true} )
         },
 
-        // uploadImage: async (_,{image},{userId})=>{
-        //     if(!userId) throw new Error("You must be logged in")
-        //     const newImage = new Image({
-        //         image,
-        //         by:userId
-        //     })
-        //     await newImage.save()
-        //     return "Image Upload SuccessFully"
-        // }
+        uploadImage: async (_,{image},{userId})=>{
+            if(!userId) throw new Error("You must be logged in")
+            console.log("image------------>", image)
+            const newImage = new Image({
+                image,
+                by:userId
+            })
+            await newImage.save()
+            return "Image Upload SuccessFully"
+        }
     }
 }
 

@@ -55,8 +55,8 @@ function Login(){
 
     return (
         <div className="bg-gray-200 dark:bg-slate-900 font-sans text-gray-700">
-            <div className="container max-h-min md:mx-auto mx-auto p-8 flex" style={{height:'861px'}}>
-                <div className="max-w-md w-full mb-auto mt-auto mx-auto">
+            <div className="container max-h-min md:mx-auto mx-auto p-8 flex" style={{minHeight:'100vh'}}>
+                <div className="max-w-md mt-20 w-full mb-auto mt-auto mx-auto">
                     <div className="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl">
                         <h1 className="text-3xl text-center mt-7 font-black dark:text-slate-200">Log in</h1>
                         <div className="p-8">
