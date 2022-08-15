@@ -21,12 +21,6 @@ export const CREATE_QUOTE = gql`
     }
 `
 
-export const UPLOAD_IMAGE = gql`
-    mutation uploadImage($image:String!){
-        image:uploadImage(image:$image)
-    }
-`
-
 export const UPDATE_USER = gql`
     mutation updateUser($userData:userData!){
         user:updateUser(userData:$userData){

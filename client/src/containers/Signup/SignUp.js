@@ -4,7 +4,6 @@ import Button from '../../component/Button'
 import {Link, useNavigate} from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import { SIGNUP_USER } from '../../GraphQLOperation/mutation'
-import UploadImage from "../../component/UploadImage";
 
 function SignUp (){
     const navigate = useNavigate()
@@ -12,7 +11,6 @@ function SignUp (){
         firstName: '',
         lastName: '',
         email: '',
-        // image: '',
         password: ''
     })
     const [signupUser,{data,loading,error}] = useMutation(SIGNUP_USER, {
@@ -41,9 +39,6 @@ function SignUp (){
             </div>
         )
     }
-
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
