@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose")
 const User  = mongoose.model("User")
-const Image = mongoose.model("Image")
 const Quote  = mongoose.model("Quotes")
 const dotenv = require("dotenv")
 
@@ -65,17 +64,6 @@ const resolvers = {
         updateUser:async (_,{userData},{userId})=>{
             if(!userId) throw new Error("You must be logged in")
                return User.findByIdAndUpdate({_id: userData._id}, {...userData}, {new:true} )
-        },
-
-        uploadImage: async (_,{image},{userId})=>{
-            if(!userId) throw new Error("You must be logged in")
-            console.log("image------------>", image)
-            const newImage = new Image({
-                image,
-                by:userId
-            })
-            await newImage.save()
-            return "Image Upload SuccessFully"
         }
     }
 }

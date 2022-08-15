@@ -27,7 +27,6 @@ const typeDefs = gql`
         email: String
         password: String
         quote: [quote]
-#        image: [Image]
     }
 
     type quote{
@@ -49,7 +48,6 @@ const typeDefs = gql`
         signinUser(userSignin:UserSigninInput!):Token
         createQuote(name:String!):String
         updateUser(userData: userData!): user
-        uploadImage(image:String!):String
     }
 
     input UserSigninInput{
