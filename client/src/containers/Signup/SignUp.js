@@ -11,7 +11,6 @@ function SignUp (){
         firstName: '',
         lastName: '',
         email: '',
-        // image: '',
         password: ''
     })
     const [signupUser,{data,loading,error}] = useMutation(SIGNUP_USER, {
