@@ -4,7 +4,6 @@ import { GET_MY_PROFILE } from '../../GraphQLOperation/queries';
 import {useNavigate} from 'react-router-dom'
 import Modal from "../../component/Modal"
 import EditProfile from "./EditProfile"
-import {UPLOAD_IMAGE} from "../../GraphQLOperation/mutation";
 
 function Profile(){
     const [open, setOpen] = useState(false)
