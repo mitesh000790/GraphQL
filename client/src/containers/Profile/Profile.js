@@ -4,13 +4,10 @@ import { GET_MY_PROFILE } from '../../GraphQLOperation/queries';
 import {useNavigate} from 'react-router-dom'
 import Modal from "../../component/Modal"
 import EditProfile from "./EditProfile"
-import UploadImage from "../../component/UploadImage";
-import Button from "../../component/Button";
 import {UPLOAD_IMAGE} from "../../GraphQLOperation/mutation";
 
 function Profile(){
     const [open, setOpen] = useState(false)
-    const [frontImg, setFrontImg] = useState("")
     const navigate  = useNavigate()
     const {loading,error,data} = useQuery(GET_MY_PROFILE,{
         context: {
@@ -18,10 +15,6 @@ function Profile(){
                 authorization:localStorage.getItem("token") || ""
             }
         }
-    })
-
-    const [uploadImage,{}] = useMutation(UPLOAD_IMAGE,{
-
     })
 
     if(!localStorage.getItem("token")){
@@ -32,37 +25,6 @@ function Profile(){
 
     const handleModalClose = () =>{
         setOpen(false)
-    }
-
-    const handleChangeImage = (e) => {
-        const data =e.target.files[0]
-        console.log("data---------------.", `${data}`)
-        setFrontImg(e.target.files[0])
-        console.log("image----------->", e.target.files[0])
-    }
-
-    const renderImage = ( type, id, label, value) => {
-        return (
-            <div >
-                <UploadImage
-                    id={id}
-                    label={label}
-                    value={value}
-                    type={type}
-                    onChange={handleChangeImage}
-                />
-            </div>
-        )
-    }
-
-    const submitImage = (e) => {
-        e.preventDefault()
-
-        uploadImage({
-            variables:{
-                image: `${frontImg.name}`
-            }
-        })
     }
 
     return (
@@ -88,10 +50,6 @@ function Profile(){
                             </svg>
                         </button>
                     </div> : ''}
-                    <form onSubmit={submitImage}>
-                    {renderImage('file', 'image', 'Upload Image', frontImg )}
-                        <Button action={"Upload Image"} actionType={"primary"}/>
-                    </form>
                     <h1 className="text-3xl mt-7 text-center font-black dark:text-slate-200">{data.users.firstName} {data.users.lastName}</h1>
                     <h6 className="text-1xl text-center font-black dark:text-slate-200">{data.users.email}</h6>
                     <div className="justify-between p-3 ml-4 mr-4 text-sm border-b border-gray-300"/>

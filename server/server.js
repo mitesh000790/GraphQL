@@ -5,7 +5,6 @@ const typeDefs = require("./schemaGql")
 const dotenv = require("dotenv")
 require("./models/User");
 require("./models/Quotes");
-require("./models/Image");
 const jwt = require("jsonwebtoken")
 const resolvers = require("./resolvers")
 
