@@ -4,6 +4,7 @@ import Button from '../../component/Button'
 import {Link, useNavigate} from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import { SIGNUP_USER } from '../../GraphQLOperation/mutation'
+import {toastError, toastSuccess} from "../../component/Toast";
 
 function SignUp (){
     const navigate = useNavigate()
@@ -15,7 +16,11 @@ function SignUp (){
     })
     const [signupUser,{data,loading,error}] = useMutation(SIGNUP_USER, {
         onCompleted(data){
+            toastSuccess("SignUp SuccessFully")
             navigate('/login')
+        },
+        onError(){
+            toastError("Add user proper detail")
         }
     })
 

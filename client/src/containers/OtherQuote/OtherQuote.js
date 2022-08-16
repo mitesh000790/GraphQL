@@ -5,7 +5,6 @@ import { GET_USER_BY_ID } from '../../GraphQLOperation/queries';
 function OtherQuote(){
     let userid = window.location.pathname.split('/');
     userid = userid[userid.length -1]
-    console.log("userid------>", userid)
     const {loading,error,data} = useQuery(GET_USER_BY_ID,{
         variables:{userid}
     })

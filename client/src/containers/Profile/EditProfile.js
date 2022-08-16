@@ -5,7 +5,7 @@ import {useMutation} from "@apollo/client";
 import {UPDATE_USER} from "../../GraphQLOperation/mutation";
 
 function EditProfile(props){
-    const { userData } = props
+    const { userData, close } = props
     const [state, setState] = useState({
         _id: '',
         firstName: '',

@@ -64,6 +64,14 @@ const resolvers = {
         updateUser:async (_,{userData},{userId})=>{
             if(!userId) throw new Error("You must be logged in")
                return User.findByIdAndUpdate({_id: userData._id}, {...userData}, {new:true} )
+        },
+        updateQuote:async (_,{quoteEdit},{userId})=>{
+            if(!userId) throw new Error("You must be logged in")
+               return Quote.findByIdAndUpdate({_id: quoteEdit._id}, {...quoteEdit}, {new:true} )
+        },
+        deleteQuote:async (_,{quotById},{userId})=>{
+            if(!userId) throw new Error("You must be logged in")
+            return Quote.findByIdAndRemove(quotById._id)
         }
     }
 }
