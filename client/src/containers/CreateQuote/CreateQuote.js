@@ -3,14 +3,26 @@ import Input from "../../component/Input";
 import Button from "../../component/Button";
 import { useMutation } from '@apollo/client';
 import { CREATE_QUOTE } from '../../GraphQLOperation/mutation';
+import {toastError, toastSuccess} from "../../component/Toast";
 
 function CreateQuote() {
     const [state, setState] = useState({name: ""})
     const [createQuote,{loading,error,data}] = useMutation(CREATE_QUOTE,{
+        context: {
+            headers: {
+                authorization:localStorage.getItem("token") || ""
+            }
+        },
         refetchQueries:[
             'getAllQuotes',
             'getMyProfile'
-        ]
+        ],
+        onCompleted(data){
+            toastSuccess("Quote Created SuccessFully")
+        },
+        onError(){
+            toastError("Something went wrong")
+        }
     })
 
     const handleChangeInput = (key, value) => {

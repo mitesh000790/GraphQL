@@ -30,7 +30,8 @@ const typeDefs = gql`
     }
 
     type quote{
-        by: ID,
+        _id: ID
+        by: ID
         name: String
     }
     
@@ -48,6 +49,8 @@ const typeDefs = gql`
         signinUser(userSignin:UserSigninInput!):Token
         createQuote(name:String!):String
         updateUser(userData: userData!): user
+        updateQuote(quoteEdit: quoteEdit!): quote
+        deleteQuote(quotById: quotById!): quote
     }
 
     input UserSigninInput{
@@ -67,6 +70,15 @@ const typeDefs = gql`
         firstName: String
         lastName: String
         email: String
+    }
+    
+    input quoteEdit{
+        _id: ID,
+        name: String
+    }
+    
+    input quotById{
+        _id: ID
     }
 
 `

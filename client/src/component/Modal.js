@@ -1,11 +1,9 @@
-import React, { Fragment, useRef, useState } from 'react'
+import React, { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-// import { ExclamationIcon } from '@heroicons/react/outline'
 
 export default function Modal(props) {
     // const [open, setOpen] = useState(true)
     const { open, close, children } = props
-    console.log("props--------------->", props)
 
     const cancelButtonRef = useRef(null)
 

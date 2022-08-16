@@ -6,7 +6,7 @@ class Input extends React.Component {
     }
 
     render() {
-        const { id, label, value, onChange, type = 'text' } = this.props
+        const { id, label, value, onChange, type = 'text', textArea } = this.props
         const handleChange = event => onChange(id, event.target.value)
         const is_input_pw = type === 'password'
 
@@ -16,12 +16,19 @@ class Input extends React.Component {
                     <label htmlFor={id}
                            className="block mb-2 dark:text-slate-200 text-sm font-medium text-gray-600">{label}</label>
 
-                    <input
+                    {textArea === "textarea" ?
+                        <textarea
+                            value={value || ''}
+                            onChange={handleChange}
+                            className="block w-full p-3 rounded bg-gray-200 border border-transparent focus:outline-none"
+                        /> :
+                        <input
                         type={is_input_pw ? 'password' : type}
                         value={value || ''}
                         onChange={handleChange}
                         className="block w-full p-3 rounded bg-gray-200 border border-transparent focus:outline-none"
-                    />
+                    />}
+
                 </div>
             </div>
         )

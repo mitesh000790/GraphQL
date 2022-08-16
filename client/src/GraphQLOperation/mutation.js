@@ -31,3 +31,20 @@ export const UPDATE_USER = gql`
         }
     }
 `
+
+export const UPDATE_QUOTE = gql`
+    mutation updateQuote($quoteEdit:quoteEdit!){
+        quote:updateQuote(quoteEdit:$quoteEdit){
+            _id,
+            name
+        }
+    }
+`
+
+export const DELETE_QUOTE = gql`
+    mutation deleteQuote($quotById:quotById!){
+        quote:deleteQuote(quotById:$quotById){
+            _id
+        }
+    }
+`

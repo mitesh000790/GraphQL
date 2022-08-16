@@ -4,6 +4,7 @@ import Button from '../../component/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../GraphQLOperation/mutation'
+import {toastSuccess, toastError} from "../../component/Toast";
 
 function Login(){
     const navigate = useNavigate()
@@ -14,12 +15,13 @@ function Login(){
     const [signinUser,{error,loading,data}] = useMutation(LOGIN_USER,{
         onCompleted(data){
             localStorage.setItem("token",data.user.token)
+            toastSuccess("Login SuccessFully")
             navigate('/profile')
+        },
+        onError(){
+            toastError("User doesn't exists with this email")
         }
     })
-
-    console.log("loading-------->",data)
-
     if(loading) return <h1>Loading</h1>
 
      const handleChangeInput = (key, value) => {
