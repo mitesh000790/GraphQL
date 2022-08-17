@@ -21,10 +21,10 @@ function OtherQuote(){
 
                     <h1 className="text-3xl ml-10 mt-7 font-black">Your Quotes</h1>
                     {data?.users.quote.map((quote, key)=>(
-                        <div key={key} className="min-w-min m-10 p-4 text-gray-800 bg-gray-100 dark:bg-slate-500 rounded-lg shadow">
+                        <div key={key} className=" m-10 p-4 text-gray-800 bg-gray-100 dark:bg-slate-500 rounded-lg shadow">
                             <div className="mb-2">
                                 <div className="h-3 text-3xl text-left text-gray-600 dark:text-slate-200">“</div>
-                                <p className="px-4 text-sm text-center text-gray-600 dark:text-slate-200">
+                                <p className="break-words px-4 text-sm text-center text-gray-600 dark:text-slate-200">
                                     {quote.name}
                                 </p>
                                 <div className="h-3 text-3xl text-right text-gray-600 dark:text-slate-200">”</div>
