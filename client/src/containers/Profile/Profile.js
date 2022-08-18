@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {useMutation, useQuery} from '@apollo/client';
+import React, {useEffect, useState} from 'react'
+import { useQuery} from '@apollo/client';
 import { GET_MY_PROFILE } from '../../GraphQLOperation/queries';
 import {useNavigate} from 'react-router-dom'
 import Modal from "../../component/Modal"
@@ -7,6 +7,7 @@ import EditProfile from "./EditProfile"
 import EditQuote from "./EditQuote";
 
 function Profile(){
+    const [profileData, setProfileData] = useState()
     const [open, setOpen] = useState(false)
     const [openQuote, setOpenQuote] = useState(false)
     const [quote, setQuote] = useState()
@@ -16,8 +17,21 @@ function Profile(){
             headers: {
                 authorization:localStorage.getItem("token") || ""
             }
+        },
+        onCompleted(data){
+            setProfileData(data)
         }
     })
+
+    useEffect(() => {
+        setProfileData(data)
+        if(data){
+            localStorage.setItem("profileQuote", JSON.stringify(data))
+        } else {
+            let collection = localStorage.getItem('profileQuote');
+            setProfileData(JSON.parse(collection))
+        }
+    }, [])
 
     if(!localStorage.getItem("token")){
         navigate("/login")
@@ -44,7 +58,7 @@ function Profile(){
                 open={open}
                 close={handleModalClose}
             >
-                <EditProfile userData={data}/>
+                <EditProfile userData={profileData}/>
             </Modal>
             <Modal
                 open={openQuote}
@@ -55,7 +69,7 @@ function Profile(){
             <div className="container md:mx-auto mx-auto p-8 flex" style={{minHeight:'100vh'}}>
                 <div className="bg-white dark:bg-slate-700 mt-20 rounded-lg overflow-hidden min-w-full shadow-2xl">
                     <img className="w-full h-80" src="https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Sunset in the mountains"/>
-                    {data.users ? <div className="text-end relative mr-4" style={{marginTop: "-20px"}}>
+                    {profileData?.users ? <div className="text-end relative mr-4" style={{marginTop: "-20px"}}>
                         <button
                             onClick={() => setOpen(true)}
                             className="text-gray-500 dark:text-gray-400 bg-slate-200 focus:outline-n one shadow-none p-2 text-lg rounded-full outline-none ring-transparent cursor-pointer"
@@ -67,15 +81,15 @@ function Profile(){
                             </svg>
                         </button>
                     </div> : ''}
-                    <h1 className="text-3xl mt-7 text-center font-black dark:text-slate-200">{data.users.firstName} {data.users.lastName}</h1>
-                    <h6 className="text-1xl text-center font-black dark:text-slate-200">{data.users.email}</h6>
+                    <h1 className="text-3xl mt-7 text-center font-black dark:text-slate-200">{profileData?.users.firstName} {profileData?.users.lastName}</h1>
+                    <h6 className="text-1xl text-center font-black dark:text-slate-200">{profileData?.users.email}</h6>
                     <div className="justify-between p-3 ml-4 mr-4 text-sm border-b border-gray-300"/>
 
                     <h1 className="text-3xl ml-10 mt-7 font-black">Your Quotes</h1>
                     <div className="overflow-y-scroll h-80">
-                        {data.users.quote.map((quote, key)=>(
+                        {profileData?.users.quote.map((quote, key)=>(
                             <div key={key} className="min-w-min m-10 p-4 text-gray-800 bg-gray-100 dark:bg-slate-500 rounded-lg shadow">
-                                {data.users ? <div key={key} className="text-end relative mr-4" style={{marginTop: "-30px"}}>
+                                {profileData?.users ? <div key={key} className="text-end relative mr-4" style={{marginTop: "-30px"}}>
                                     <button
                                         onClick={() => handleQuoteModal({quote:quote})}
                                         className="text-gray-500 dark:text-gray-400 bg-slate-200 focus:outline-n one shadow-none p-2 text-lg rounded-full outline-none ring-transparent cursor-pointer"
