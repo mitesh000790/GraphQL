@@ -5,7 +5,6 @@ import {Link} from "react-router-dom"
 
 function Home (){
     const [offlineData, setOfflineData] = useState()
-    const [mode, setMode] = useState('online');
         const {loading,error,data} = useQuery(GET_ALL_QUOTES,{
             onCompleted(data){
                 setOfflineData(data)
@@ -17,7 +16,6 @@ function Home (){
         if(data){
             localStorage.setItem("quote", JSON.stringify(data))
         } else {
-            setMode('offline')
             let collection = localStorage.getItem('quote');
             setOfflineData(JSON.parse(collection))
         }
