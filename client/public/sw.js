@@ -17,7 +17,8 @@ this.addEventListener("install", (event) => {
                 '/create-quote',
                 '/other-profile/:id',
                 'https://react-graphql-front-end.herokuapp.com/static/css/main.f97393ba.css',
-                'https://react-graphql-front-end.herokuapp.com/static/js/main.0122d2f2.js'
+                'https://react-graphql-front-end.herokuapp.com/static/js/main.0122d2f2.js',
+                'https://graph-ql1.herokuapp.com'
             ])
         })
     )
