@@ -26,7 +26,7 @@ this.addEventListener("fetch", (event) => {
 
 
     if (!navigator.onLine) {
-        if (event.request.url === "http://localhost:3000/static/js/main.chunk.js") {
+        if (event.request.url === "https://graph-ql1.herokuapp.com/static/js/main.chunk.js") {
             event.waitUntil(
                 this.registration.showNotification("Internet", {
                     body: "internet not working",
