@@ -58,7 +58,7 @@ function SignUp (){
         <div className="bg-gray-200 dark:bg-slate-900 font-sans text-gray-700">
             <div className="container md:mx-auto mx-auto p-8 flex" style={{minHeight:'100vh'}}>
                 <div className="max-w-md mt-20 w-full mb-auto mt-auto mx-auto">
-                    <div className="bg-white dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl">
+                    <div className="bg-white mt-10 dark:bg-slate-700 rounded-lg overflow-hidden shadow-2xl">
                         <h1 className="text-3xl text-center mt-7 font-black dark:text-slate-200">Sign Up</h1>
                         <div className="p-8">
                             <form  onSubmit={handleSubmit}>
