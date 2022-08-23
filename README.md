@@ -2,7 +2,7 @@
 
 A highly scalable, Progressive Web Application foundation,boilerplate, with the best Developer Experience.
 
-#### Demo: [react-graphql-front-end.herokuapp.com/](react-graphql-front-end.herokuapp.com/)
+#### Demo: [https://react-graphql-front-end.herokuapp.com/](https://react-graphql-front-end.herokuapp.com/)
 
 ### Quick Start
 
