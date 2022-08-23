@@ -2,11 +2,12 @@
 
 A highly scalable, Progressive Web Application foundation,boilerplate, with the best Developer Experience.
 
-### [View Demo](react-graphql-front-end.herokuapp.com/)
+#### Demo: [react-graphql-front-end.herokuapp.com/](react-graphql-front-end.herokuapp.com/)
 
 ### Quick Start
 
 Frontend: *[https://github.com/mitesh000790/GraphQL](https://github.com/mitesh000790/GraphQL)*
+
 Backend:  *[https://github.com/mitesh000790/GraphQL-server](https://github.com/mitesh000790/GraphQL-server)*
 
 Node Version:
